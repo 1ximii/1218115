@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#bbcbb3",
+                    "on-surface-variant": "#4e463a",
+                    "inverse-surface": "#313030",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-container-high": "#eae7e7",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface": "#fcf9f8",
+                    "on-primary-container": "#503909",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e5e2e1",
+                    "secondary-fixed": "#d7e7cf",
+                    "primary-container": "#c5a36a",
+                    "on-surface": "#1c1b1b",
+                    "on-background": "#1c1b1b",
+                    "tertiary": "#5e5e5d",
+                    "primary-fixed": "#ffdeaa",
+                    "primary": "#755a28",
+                    "on-secondary-fixed": "#121f10",
+                    "background": "#fcf9f8",
+                    "secondary": "#53624f",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#d1c5b5",
+                    "surface-dim": "#dcd9d9",
+                    "on-secondary-fixed-variant": "#3c4b38",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#464746",
+                    "outline": "#7f7668",
+                    "secondary-container": "#d4e5cc",
+                    "primary-fixed-dim": "#e6c185",
+                    "tertiary-container": "#a8a8a6",
+                    "surface-container": "#f0eded",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#3c3d3c",
+                    "on-primary-fixed-variant": "#5b4313",
+                    "inverse-primary": "#e6c185",
+                    "surface-bright": "#fcf9f8",
+                    "on-secondary-container": "#586753",
+                    "tertiary-fixed-dim": "#c7c6c5",
+                    "tertiary-fixed": "#e3e2e0",
+                    "surface-tint": "#755a28",
+                    "on-tertiary-fixed": "#1a1c1b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#271900",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-lg": "48px",
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "container-max": "1200px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "body-md": ["Work Sans"],
+                    "headline-lg": ["Noto Serif"],
+                    "headline-display": ["Noto Serif"],
+                    "label-caps": ["Work Sans"],
+                    "headline-md": ["Noto Serif"],
+                    "body-lg": ["Work Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "headline-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .grain-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen">
+<div class="grain-overlay fixed inset-0 z-[100]"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-[#E8E6E1] dark:border-zinc-800 bg-white/90 backdrop-blur-[30px] dark:bg-zinc-950/90">
+<div class="flex justify-between items-center w-full px-16 py-8 mx-auto">
+<div class="text-2xl font-serif tracking-tighter text-zinc-900 dark:text-zinc-50">STAY WITH MOUNTAIN</div>
+<div class="hidden md:flex items-center gap-10 font-serif tracking-[0.1em] text-sm uppercase">
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#C5A36A] transition-colors duration-300" href="#">首頁</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#C5A36A] transition-colors duration-300" href="#">菜單</a>
+<a class="text-[#C5A36A] border-b border-[#C5A36A] pb-1 hover:text-[#C5A36A] transition-colors duration-300" href="#">藝廊</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#C5A36A] transition-colors duration-300" href="#">預約</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-zinc-900 cursor-pointer" data-icon="language">language</span>
+<button class="bg-[#755a28] text-white px-6 py-2.5 font-serif text-sm uppercase tracking-widest scale-98 active:opacity-80 transition-all">
+                    立即預約
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="pt-40 pb-24 px-16 max-w-[1400px] mx-auto text-center">
+<span class="font-label-caps text-primary uppercase tracking-[0.2em] mb-4 block">視覺之旅</span>
+<h1 class="font-headline-display text-on-background mb-6">寧靜藝廊</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto italic">
+            當山巔與城市天際交會，探索當代建築與迷人台中夜景的交響樂。
+        </p>
+</header>
+<main class="px-16 pb-stack-lg max-w-[1400px] mx-auto">
+<!-- Section: City Lights -->
+<section class="mb-24">
+<div class="flex items-end justify-between mb-stack-md border-b border-outline-variant pb-4">
+<h2 class="font-headline-lg text-on-background">城市燈火</h2>
+<span class="font-label-caps text-on-surface-variant uppercase mb-2">台中地平線</span>
+</div>
+<div class="masonry-grid">
+<div class="col-span-8 h-[500px] overflow-hidden bg-surface-container relative group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="wide angle panoramic long exposure of taichung city lights at night from a mountain peak altitude with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIwbXkvk3w1kkvYrvD-MccTjDHeyXPLxvSh3yX-vcmo3hJDczGYpSPoztCKeJAqCCcKdTaTM40BbF9eLAzacKg65YrtNTGj-ZTDw6nzRqz8-Dn6Pxi7uI8Uukf-a6U_ja58pDemXaewjERokStrrlDxuLniz5nhjsvW4wpd5TUcEjdulsHGEB1-nuKW97ijYqjxa3K9QNkZbMtopvsfpbg61u7NVip2UZfSVTQFmA27F4OiEvadEJxw8L0rq3b5zju_jASgqKSqLM"/>
+<div class="absolute inset-0 bg-black/10"></div>
+</div>
+<div class="col-span-4 h-[500px] flex flex-col gap-6">
+<div class="h-1/2 overflow-hidden bg-surface-container relative group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="dramatic night sky over city skyline with deep blues and glowing warm street lights appearing like embers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALnf0USfY615wHH01af9WjbQax3vyqvpq9Ixui1GyD_cZwWt8yR4LKrD2irJVkH_OsGSzDJ_ORWWDh3W5CGatvVBzamZmocwHtGfzw0pa1Syt5-imJ78KQu7REgc-gwMYx3QlVScsCZj8BJBujt_ipEeBj6clulBq3_IJaFVJtBWFsJOkotvaGyLZhIPEme7-eEcX_FiJ-G-cczbZoTrKXsD3uNxz5HKmDWCDiDFjLDH6AqxcUNTH4h5rue4QwLQn01h0bUzYQ3uM"/>
+</div>
+<div class="h-1/2 overflow-hidden bg-surface-container relative group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="abstract night view of city lights through glass with soft reflections and elegant light trails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRqHn5eNB1Ni1xf0DXKN6JFi9aKxXrHmov6AalBzKHdANF_tavTRbnjQ1Sc6w0OUJW6AJr9gEoVVP9fSSdrMLDpYCbjtg1XCqaetmU-v6369oyVy2f1tNyvP1Iho413Fhyj1FgtAgHVML5KpmKovms3b6tkK14tg7iP8DbzN8efWG9C83F4g8IEyWosEWhTbaBMpGXulXiXFOPj6WBHS2ceMHR3TQDWksZKyG5qpBTFTo2QtsIg0oC_LeF7nwozd3UYUWIpLXdUrg"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Interior Elegance -->
+<section class="mb-24">
+<div class="flex items-end justify-between mb-stack-md border-b border-outline-variant pb-4">
+<h2 class="font-headline-lg text-on-background">優雅室內</h2>
+<span class="font-label-caps text-on-surface-variant uppercase mb-2">觸感奢華</span>
+</div>
+<div class="masonry-grid">
+<div class="col-span-4 h-[600px] overflow-hidden bg-surface-container group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="modern minimalist restaurant interior with warm wood accents soft indirect lighting and large floor to ceiling windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy809ZSQzLk9YLnnfGiFRQlteu60nQ9q0s2alME3Ne8-P51Hb837YYBeHWe7aO25Zu7vppfzfr8gE3Ye1ySgpPZPozlon-_7KfqMew4vM2uUNXoHu5ODVhbJ8uuFKGWN_QvCUTuynTvCUBaGp-H3gXkOqhKHcOLBsWLSMfnss5rHNG1DfFSY_LlN6BcR8_hceQpyZnWqA3LqVKbov0A6TgfWWhgU20mHrZqEOsiVw4oummxlSeJA4NMsbJw5ZS1ecnSl_A3OHW3rk"/>
+</div>
+<div class="col-span-8 flex flex-col gap-6">
+<div class="grid grid-cols-2 gap-6 h-[288px]">
+<div class="overflow-hidden bg-surface-container group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="close up of fine dining table setting with linen napkin crystal glassware and soft warm candlelight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAowaJRDaVchMHsy-poNy2IjZj2Yc7U5mLorfDuwkev8MkpfpdfXxuFpa0BDjh6il_XovvJkoh0jdQOsxZlHWG5cV9D3tG4uqjOMXsVmLhUojDipBQH592jq21kJeKCutsN2h7xzYaP8Ka0yTB9mk9CWRENu1OwpzUG1Ki4_u0cadKj_HEcZ-yUnjYSjScykM2PloOjyLwBAyxqYP_MCYpNsjWuLm7-go7hsH9YkrmzW272_eG6f03oIGU49jn0I-8_zjWreDSAKn4"/>
+</div>
+<div class="overflow-hidden bg-surface-container group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="elegant bar area with brass accents backlit liquor bottles and sophisticated lounge atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZxHr6vGEVb-aAhcsHn3INoPO52KTV_iGfARWJVKK1uZRNs2v-z6CGd5CDCjEFgW8NETYgKACSWcrdljy6yb6dafdASkC0Uyb3_H6aI129zBzWzVWOAluoonWVnNgRO36eG5zGuRPHsr90S6Ek1s0Yois3XQ50Y-BYrcHdQActzbAnRSdMYOA2KuV-jLs3XgdOQ0PwLsjSlN_QkwRgg5LaDp4o4SHWbA-5ITWEyWyRyhKsxoMwfomUUwaRBtj5-nLUV6np6D6Lx34"/>
+</div>
+</div>
+<div class="h-[288px] overflow-hidden bg-surface-container group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="architectural detail of a grand staircase with stone textures and dramatic architectural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBC8QdtvBo4FJAOxKm8e-LyrHrGfHaOtUWcQKYNwwyTtBBw7VAuiLashqrBoQjW_VIUKLpPwEdZvhbHb7wrrh88fRvFJE7In7VgLh47OLb67_AWO2SCqLsKLWx8CzAc6lbICZba1jT-zMeHPgWDisyyTCDTF-1WRY2VMlUvmBekh_W1VZZjutq5Ou5QeVlu3dmkW3M66zqKcKv3Fi3YvMfxwygXc99ibSjsCMxUExzgpaWEYcujJ6TdcAac4-ZRQK2K1lpXuHT_OU"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Outdoor Terrace -->
+<section class="mb-24">
+<div class="flex items-end justify-between mb-stack-md border-b border-outline-variant pb-4">
+<h2 class="font-headline-lg text-on-background">戶外露台</h2>
+<span class="font-label-caps text-on-surface-variant uppercase mb-2">通透靜謐</span>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="outdoor dining terrace with fire pits soft blankets on chairs and panoramic views of distant city lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx7fUgyN6E_Gm3W26LQIXvqbIl3UmkNMikUjB_6uJS8x407gE52VjeR7vpQgco9Nk4OgS4FgC1WGqYO9LumktuR6qS7Xj3c7feUdxRkG2efp_RD16KyFnEFUkrhTYGo7toGOfWiaktBR_eG7n5pQMY_LYpzj8K7fMjK0eNHae-OUmO6Ha53TT0BVYsXLYYEvml2UCmVbyn3McUw9dZ4R3uCIDwrPh5X0nOW91CFrDPnlBN4NuJbSXt1FTXDPSvl-PCIHkBqrkkddE"/>
+</div>
+<div class="aspect-[3/4] overflow-hidden bg-surface-container group mt-12">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="close up of a designer cocktail on a stone terrace table with the city lights blurred in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxKNJBmrMflYNfVPOj9kpHgkuoOyy5lCPdpWjqSGka9DudlKBkwBKdjvXR9nXFCruYDQXtWF7L_YyaHilBXl_9ELgwNvXm67MSXu4LBqHGr8kfMSqOngJZaD4lR1XeytfpBQw-NeHP4o0e78EecKsGTzJhxvVPCyUk0Z0FUP1J_gGkhUJI5BGbfQcQSUV9T4GUMM3EgFJwtVLB9nAK8TC2YrTcPdQZ1IwRpp6LEIg9uwtdd3likjVcrTHjEw_Rmk2k_q-SD8xgLsM"/>
+</div>
+<div class="aspect-[3/4] overflow-hidden bg-surface-container group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="terrace architecture at night with sharp minimalist lines and glass railings looking out over the mountain side" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRqZUVZA4ckfRhY7D_OUGWwp6piuFpQBRKg-DYPfa1pBmV3M4lilF2ps8OGDtp2Q2fsN3rHAtD4mP5m70UvuDqu1vLhzUUjvqNH9Qi9h9mzCh-zDZ6391-1jv-Gr-Aaw5Fp5wlXQ_rQapRTKweGubwssp98KSS_saXPZlZ6fKz7jNOwJ9ANLVrrqkvzdjojaJjYDd7v9gvYQRaC1nmJXuQbGHFzMmKTsNnl0CVnjJmfctzdJ0bmBbXeNxZy_qlBnt7Cqvj0QMDaAU"/>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 border-t border-outline-variant text-center">
+<h3 class="font-headline-md text-on-background mb-4 italic">親自感受這份氛圍</h3>
+<p class="font-body-md text-on-surface-variant mb-10 max-w-lg mx-auto">
+                在台中最美的景緻中，與我們共享一段卓越的美食晚宴。
+            </p>
+<button class="border border-on-surface text-on-surface px-12 py-4 font-serif text-sm uppercase tracking-[0.2em] hover:bg-on-surface hover:text-surface transition-all duration-300">
+                預約您的座位
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#E8E6E1] dark:border-zinc-800 bg-[#FCFAF7] dark:bg-zinc-900">
+<div class="flex flex-col items-center justify-center py-20 px-16 gap-8 w-full">
+<div class="text-lg italic font-serif text-zinc-800 dark:text-zinc-200">Stay with Mountain (眺高)</div>
+<div class="flex gap-12 font-serif text-[10px] uppercase tracking-[0.2em]">
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">隱私政策</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">條款</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">地點</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">聯繫我們</a>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-[#C5A36A] cursor-pointer opacity-100 hover:opacity-80 transition-opacity" data-icon="share">share</span>
+<span class="material-symbols-outlined text-[#C5A36A] cursor-pointer opacity-100 hover:opacity-80 transition-opacity" data-icon="photo_camera">photo_camera</span>
+<span class="material-symbols-outlined text-[#C5A36A] cursor-pointer opacity-100 hover:opacity-80 transition-opacity" data-icon="pin_drop">pin_drop</span>
+</div>
+<div class="font-serif text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
+                © 2024 Stay with Mountain (眺高). All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

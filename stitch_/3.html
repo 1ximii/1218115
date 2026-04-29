@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stay with Mountain - 預約訂位</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,700;1,400&amp;family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#bbcbb3",
+                        "on-surface-variant": "#4e463a",
+                        "inverse-surface": "#313030",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-high": "#eae7e7",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface": "#fcf9f8",
+                        "on-primary-container": "#503909",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-fixed": "#d7e7cf",
+                        "primary-container": "#c5a36a",
+                        "on-surface": "#1c1b1b",
+                        "on-background": "#1c1b1b",
+                        "tertiary": "#5e5e5d",
+                        "primary-fixed": "#ffdeaa",
+                        "primary": "#755a28",
+                        "on-secondary-fixed": "#121f10",
+                        "background": "#fcf9f8",
+                        "secondary": "#53624f",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#d1c5b5",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed-variant": "#3c4b38",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "outline": "#7f7668",
+                        "secondary-container": "#d4e5cc",
+                        "primary-fixed-dim": "#e6c185",
+                        "tertiary-container": "#a8a8a6",
+                        "surface-container": "#f0eded",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#3c3d3c",
+                        "on-primary-fixed-variant": "#5b4313",
+                        "inverse-primary": "#e6c185",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-container": "#586753",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-tint": "#755a28",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#271900",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "margin-mobile": "20px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "container-max": "1200px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Work Sans", "sans-serif"],
+                        "headline-lg": ["Noto Serif", "serif"],
+                        "headline-display": ["Noto Serif", "serif"],
+                        "label-caps": ["Work Sans", "sans-serif"],
+                        "headline-md": ["Noto Serif", "serif"],
+                        "body-lg": ["Work Sans", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "headline-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fcf9f8;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<nav class="fixed top-0 w-full z-50 border-b border-[#E8E6E1] bg-white/90 backdrop-blur-[30px] dark:bg-zinc-950/90">
+<div class="flex justify-between items-center w-full px-16 py-8 mx-auto">
+<span class="text-2xl font-serif tracking-tighter text-zinc-900 dark:text-zinc-50 uppercase">STAY WITH MOUNTAIN</span>
+<div class="hidden md:flex items-center gap-12 font-serif tracking-[0.1em] text-sm uppercase">
+<a class="text-zinc-500 hover:text-[#C5A36A] transition-colors duration-300" href="#">Home</a>
+<a class="text-zinc-500 hover:text-[#C5A36A] transition-colors duration-300" href="#">Menu</a>
+<a class="text-zinc-500 hover:text-[#C5A36A] transition-colors duration-300" href="#">Gallery</a>
+<a class="text-[#C5A36A] border-b border-[#C5A36A] pb-1" href="#">Booking</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#C5A36A] cursor-pointer" data-icon="language">language</span>
+<button class="bg-primary text-white px-6 py-2 font-label-caps uppercase tracking-widest scale-98 active:opacity-80 transition-all hover:bg-on-primary-container">
+                    立即預約
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24">
+<div class="max-w-[1200px] mx-auto px-margin-desktop">
+<header class="text-center mb-stack-lg">
+<h1 class="font-headline-display text-headline-display text-on-surface mb-stack-sm">用餐的藝術</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto italic">在星空下體驗寧靜的高山美食，與群星共度您的夜晚。</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-7 bg-white p-12 border border-[#E8E6E1] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-9xl" data-icon="mountain_flag">mountain_flag</span>
+</div>
+<form class="space-y-stack-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase tracking-widest">抵達日期</label>
+<div class="relative">
+<input class="w-full border-0 border-b border-outline-variant py-3 focus:ring-0 focus:border-primary-container bg-transparent font-body-md" type="date"/>
+<span class="material-symbols-outlined absolute right-0 bottom-3 text-outline opacity-50" data-icon="calendar_month">calendar_month</span>
+</div>
+</div>
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase tracking-widest">偏好時段</label>
+<div class="relative">
+<select class="w-full border-0 border-b border-outline-variant py-3 focus:ring-0 focus:border-primary-container bg-transparent font-body-md appearance-none">
+<option>18:00 — 日落景觀</option>
+<option>19:00 — 暮色微光</option>
+<option>20:00 — 星空晚宴</option>
+<option>21:00 — 深夜時段</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 bottom-3 text-outline opacity-50 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase tracking-widest">人數</label>
+<div class="relative">
+<input class="w-full border-0 border-b border-outline-variant py-3 focus:ring-0 focus:border-primary-container bg-transparent font-body-md" max="10" min="1" placeholder="用餐人數" type="number"/>
+<span class="material-symbols-outlined absolute right-0 bottom-3 text-outline opacity-50" data-icon="group">group</span>
+</div>
+</div>
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase tracking-widest">座位偏好</label>
+<div class="relative">
+<select class="w-full border-0 border-b border-outline-variant py-3 focus:ring-0 focus:border-primary-container bg-transparent font-body-md appearance-none">
+<option>靠窗座位 (面景)</option>
+<option>中央沙龍區</option>
+<option>戶外露台 (視季節開放)</option>
+<option>私密包廂</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 bottom-3 text-outline opacity-50 pointer-events-none" data-icon="chair">chair</span>
+</div>
+</div>
+</div>
+<div class="space-y-unit pt-stack-sm">
+<label class="font-label-caps text-label-caps text-outline uppercase tracking-widest">特殊需求</label>
+<textarea class="w-full border border-outline-variant p-4 focus:ring-0 focus:border-primary-container bg-surface-container-lowest font-body-md" placeholder="飲食限制、慶祝活動或特殊需求..." rows="3"></textarea>
+</div>
+<div class="pt-stack-md">
+<button class="w-full bg-primary text-white py-5 font-label-caps text-sm tracking-[0.2em] uppercase hover:bg-on-primary-container transition-all flex justify-center items-center gap-3" type="submit">
+<span>確認預約</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-[10px] font-label-caps text-outline text-center mt-stack-sm tracking-wider">預約成功後將寄發確認信件。</p>
+</div>
+</form>
+</div>
+<div class="lg:col-span-5 space-y-stack-md">
+<section class="bg-[#FCFAF7] border border-[#E8E6E1] p-8">
+<div class="flex items-center gap-3 mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<h2 class="font-label-caps text-label-caps uppercase tracking-widest">預約規範</h2>
+</div>
+<ul class="space-y-6 font-body-md text-on-surface-variant text-sm">
+<li class="flex gap-4">
+<span class="font-serif italic text-primary-container font-bold">01</span>
+<div>
+<strong class="text-on-surface block mb-1">用餐時間</strong>
+<p>標準用餐時間為 120 分鐘，如需更放鬆的步調請告知。</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="font-serif italic text-primary-container font-bold">02</span>
+<div>
+<strong class="text-on-surface block mb-1">保留時間</strong>
+<p>我們將為您保留 15 分鐘，如會遲到請務必聯繫。</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="font-serif italic text-primary-container font-bold">03</span>
+<div>
+<strong class="text-on-surface block mb-1">取消預約</strong>
+<p>24 小時內取消可能產生小額費用，以支持我們在地食材的採購。</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="font-serif italic text-primary-container font-bold">04</span>
+<div>
+<strong class="text-on-surface block mb-1">寵物友善規範</strong>
+<p>歡迎乖巧的寵物進入我們的戶外露台，請在預約時註記。</p>
+</div>
+</li>
+</ul>
+</section>
+<div class="relative h-64 border border-[#E8E6E1] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="室內景觀" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUD_9DA3vjKE9_rsRAc7_OBgR9mXC-nNx5AADfKum2x2ZYHi-USKfZ7VhhQXONcw-K3L35c0d_tsCJhxAob7QWSbS-87Yfz5_vOUXt_6IdoXyjWoRa88TGBMG_dYxg2nYfQwAs5KhwZB94S9Dvx1v05CTQdMcozHOHiQK6eqdYSdSKo7c7oE102yL6FyUKAl2sWR4j20GXosQUSYFB_rg5oDtKu3mJd1knGAhAURjLbiXcXPLdaTGkLpLAoE8DJJsNtml_tMvcItU"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+<div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 border border-[#E8E6E1]">
+<p class="font-label-caps text-[10px] tracking-widest uppercase">氛圍：靜謐清幽</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full border-t border-[#E8E6E1] bg-[#FCFAF7] dark:bg-zinc-900">
+<div class="flex flex-col items-center justify-center py-20 px-16 gap-8 w-full">
+<span class="text-lg italic font-serif text-zinc-800 dark:text-zinc-200">Stay with Mountain (眺高)</span>
+<div class="flex flex-wrap justify-center gap-12 font-serif text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
+<a class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">Terms</a>
+<a class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">Location</a>
+<a class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">Contact</a>
+</div>
+<p class="font-serif text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 opacity-100">
+                © 2024 Stay with Mountain (眺高). All rights reserved.
+            </p>
+</div>
+</footer>
+<div class="fixed bottom-8 right-8">
+<button class="bg-[#C5A36A] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+</button>
+</div>
+</body></html>

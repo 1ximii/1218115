@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#bbcbb3",
+                    "on-surface-variant": "#4e463a",
+                    "inverse-surface": "#313030",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-container-high": "#eae7e7",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface": "#fcf9f8",
+                    "on-primary-container": "#503909",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e5e2e1",
+                    "secondary-fixed": "#d7e7cf",
+                    "primary-container": "#c5a36a",
+                    "on-surface": "#1c1b1b",
+                    "on-background": "#1c1b1b",
+                    "tertiary": "#5e5e5d",
+                    "primary-fixed": "#ffdeaa",
+                    "primary": "#755a28",
+                    "on-secondary-fixed": "#121f10",
+                    "background": "#fcf9f8",
+                    "secondary": "#53624f",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#d1c5b5",
+                    "surface-dim": "#dcd9d9",
+                    "on-secondary-fixed-variant": "#3c4b38",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#464746",
+                    "outline": "#7f7668",
+                    "secondary-container": "#d4e5cc",
+                    "primary-fixed-dim": "#e6c185",
+                    "tertiary-container": "#a8a8a6",
+                    "surface-container": "#f0eded",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#3c3d3c",
+                    "on-primary-fixed-variant": "#5b4313",
+                    "inverse-primary": "#e6c185",
+                    "surface-bright": "#fcf9f8",
+                    "on-secondary-container": "#586753",
+                    "tertiary-fixed-dim": "#c7c6c5",
+                    "tertiary-fixed": "#e3e2e0",
+                    "surface-tint": "#755a28",
+                    "on-tertiary-fixed": "#1a1c1b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#271900",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-lg": "48px",
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "container-max": "1200px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "body-md": ["Work Sans", "sans-serif"],
+                    "headline-lg": ["Noto Serif", "serif"],
+                    "headline-display": ["Noto Serif", "serif"],
+                    "label-caps": ["Work Sans", "sans-serif"],
+                    "headline-md": ["Noto Serif", "serif"],
+                    "body-lg": ["Work Sans", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "headline-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+        body {
+            background-color: #fcf9f8;
+            color: #1c1b1b
+        }
+        .paper-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuC8gf4nJ4iiIwpOISEHov9HQMCslGnixyaulU5oh7VzCg8ZR9_P_Rva3kKSo2SFQm1TXEm9S6s-SQvRoFXK7XLEpvOIISavBaSWQo-rxNsGA_weG4mE-KYhOry1Y4Kgy62GcW7Ms6jNHK1hWMfvx-TOOlUG9Vm2U2wnPOlbVGPpnRVI2Sar-anTUnTA7tM5I-r77tpyjiJz4iZg1NjHiJu2e8lDOHzBTikEiNkYclKuz6VlxWoyBas-8t6xRSwQUi4vees96V3GXPw)
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background bg-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 border-b border-[#E8E6E1] dark:border-zinc-800 bg-white/90 backdrop-blur-[30px] dark:bg-zinc-950/90">
+<div class="flex justify-between items-center w-full px-16 py-8 mx-auto">
+<span class="text-2xl font-serif tracking-tighter text-zinc-900 dark:text-zinc-50 uppercase">STAY WITH MOUNTAIN</span>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-serif tracking-[0.1em] text-sm uppercase text-zinc-500 dark:text-zinc-400 hover:text-[#C5A36A] transition-colors duration-300" href="#">首頁</a>
+<a class="font-serif tracking-[0.1em] text-sm uppercase text-[#C5A36A] border-b border-[#C5A36A] pb-1 hover:text-[#C5A36A] transition-colors duration-300" href="#">菜單</a>
+<a class="font-serif tracking-[0.1em] text-sm uppercase text-zinc-500 dark:text-zinc-400 hover:text-[#C5A36A] transition-colors duration-300" href="#">藝廊</a>
+<a class="font-serif tracking-[0.1em] text-sm uppercase text-zinc-500 dark:text-zinc-400 hover:text-[#C5A36A] transition-colors duration-300" href="#">訂房</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-zinc-500 cursor-pointer hover:text-[#C5A36A] transition-colors" data-icon="language">language</span>
+<button class="font-serif tracking-[0.1em] text-sm uppercase px-6 py-2 border border-[#C5A36A] text-[#C5A36A] hover:bg-[#C5A36A] hover:text-white transition-all duration-300 scale-98 active:opacity-80">立即預約</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20">
+<!-- Hero Header -->
+<header class="max-w-[1200px] mx-auto px-margin-desktop text-center mb-stack-lg">
+<span class="font-label-caps text-primary tracking-[0.3em] uppercase mb-4 block">極致饗宴</span>
+<h1 class="font-headline-display text-on-surface mb-6">味蕾之旅</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto italic">由寧靜的山巔與傍晚的優雅中汲取靈感，精心挑選的風味。</p>
+</header>
+<!-- Menu Section: Featured Items Bento -->
+<section class="max-w-[1200px] mx-auto px-margin-desktop mb-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Large Feature Card -->
+<div class="md:col-span-2 relative group overflow-hidden border border-[#E8E6E1] bg-white h-[500px]">
+<img alt="分享餐點" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Gourmet sharing platter with artisan cheeses, seasonal fruits, and grilled sourdough on a light marble surface with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDWXhO5enS5pS9AJx-CDtP4u9rTvC_n-AcZ88FRANKrKyt01ZFa5zrkD9h1rL907smzHnE1LBbcoFQBa0_-5NliQjgYT6bi3W1eRHgI1NpCjQd2PZmq42wamdniH5pnc8zC5jDtEfiYALV_Nd4CF08WsoaWx6_nsknKsSnu1qkvnv3LjR7uOxMQUy1z92qfK6BlNC49nTVbAKOTiwt_AuNNMgWp9YMN8N4MD_5-2mftlnGjUQRVh0eR7KjZbnDZpGgVPS5no24kf8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-10 text-white">
+<span class="bg-primary-container/20 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest mb-4 inline-block border border-white/20">經典體驗</span>
+<h2 class="font-headline-lg mb-2">分享餐點</h2>
+<p class="font-body-md opacity-90 max-w-md">適合多人分享，慶祝團聚的時刻。</p>
+</div>
+</div>
+<!-- Small Vertical Cards -->
+<div class="flex flex-col gap-6">
+<div class="flex-1 border border-[#E8E6E1] bg-white p-8 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="restaurant">restaurant</span>
+<h3 class="font-headline-md mb-2">鬆餅</h3>
+<p class="font-body-md text-on-surface-variant mb-4">外酥內軟，淋上純正的山間蜂蜜。</p>
+<span class="font-label-caps text-primary border-b border-primary/30 pb-1 cursor-pointer hover:border-primary transition-all">瀏覽類別</span>
+</div>
+<div class="flex-1 border border-[#E8E6E1] bg-white relative group overflow-hidden">
+<img alt="現打果昔" class="w-full h-full object-cover grayscale-[0.2] transition-all duration-700 group-hover:grayscale-0" data-alt="Two vibrant berry smoothies in tall glass jars with fresh mint garnish on a minimalist white table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2I43g7oowv9_BN5qB7CX7xuQOrbMuLnbuKZ7bmbVhZSsDY9Uyq5xknH_oyVreMO93EdLXcvBqyMx03_54DPAYGCFGs0XjuOwZMkzosGKA_avGfFt6cWu6dskQ4UG1hhNTzCTjZ5C0JQVeIVZDw4B1wiOPYyhjl4xtljcghKEMWZdz0241S22nSmXcfzqoRZ5Tr1L1bBszbEKAxOi0cnkhSjYS17IaNLENMa8LvHKzM2ysuLKGMXa8aF7kw9NAOP6p3LYv1zl3YUk"/>
+<div class="absolute inset-0 bg-white/20 flex items-center justify-center">
+<div class="bg-white/90 backdrop-blur-sm px-6 py-3 border border-[#E8E6E1]">
+<h3 class="font-headline-md text-zinc-900">現打果昔</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Details Grid -->
+<section class="max-w-[1200px] mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Category Column Left -->
+<div class="lg:col-span-5 space-y-16">
+<!-- All Day Snacks -->
+<div>
+<div class="flex items-baseline gap-4 mb-8">
+<h3 class="font-headline-lg text-zinc-900">全日點心</h3>
+<div class="flex-grow border-b border-[#E8E6E1] mb-2"></div>
+</div>
+<ul class="space-y-8">
+<li class="flex justify-between items-start group">
+<div class="max-w-[80%]">
+<h4 class="font-headline-md text-zinc-900 group-hover:text-primary transition-colors">松露帕瑪森薯條</h4>
+<p class="font-body-md text-on-surface-variant mt-1">手工現切馬鈴薯，搭配熟成帕瑪森起司與白松露油。</p>
+</div>
+<span class="font-serif text-lg text-primary">$12</span>
+</li>
+<li class="flex justify-between items-start group">
+<div class="max-w-[80%]">
+<h4 class="font-headline-md text-zinc-900 group-hover:text-primary transition-colors">山間布切塔</h4>
+<p class="font-body-md text-on-surface-variant mt-1">野菇肉醬、細緻里考塔起司與義式陳年醋珠。</p>
+</div>
+<span class="font-serif text-lg text-primary">$16</span>
+</li>
+<li class="flex justify-between items-start group">
+<div class="max-w-[80%]">
+<h4 class="font-headline-md text-zinc-900 group-hover:text-primary transition-colors">手作橄欖</h4>
+<p class="font-body-md text-on-surface-variant mt-1">以柑橘皮與山間香草醃漬。</p>
+</div>
+<span class="font-serif text-lg text-primary">$8</span>
+</li>
+</ul>
+</div>
+<!-- Smoothie Selection -->
+<div class="bg-surface-container-low p-10 border border-[#E8E6E1]">
+<h3 class="font-headline-lg text-zinc-900 mb-8 border-l-4 border-primary pl-6">現打果昔</h3>
+<div class="grid grid-cols-1 gap-8">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-full bg-white border border-[#E8E6E1] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="energy_savings_leaf">energy_savings_leaf</span>
+</div>
+<div>
+<h4 class="font-headline-md text-zinc-900">綠色律動</h4>
+<p class="font-body-md text-on-surface-variant italic text-sm">菠菜、羽衣甘藍、鳳梨、生薑、椰子水。</p>
+<span class="font-serif text-primary block mt-1">$14</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-full bg-white border border-[#E8E6E1] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="wb_sunny">wb_sunny</span>
+</div>
+<div>
+<h4 class="font-headline-md text-zinc-900">高山夕照</h4>
+<p class="font-body-md text-on-surface-variant italic text-sm">芒果、薑黃、百香果、希臘優格。</p>
+<span class="font-serif text-primary block mt-1">$14</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Separator Image -->
+<div class="lg:col-span-2 hidden lg:flex items-center justify-center">
+<div class="h-full w-[1px] bg-[#E8E6E1] relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface p-4 rotate-90 whitespace-nowrap">
+<span class="font-label-caps text-zinc-400 tracking-[0.5em] uppercase">精選</span>
+</div>
+</div>
+</div>
+<!-- Category Column Right -->
+<div class="lg:col-span-5 space-y-16">
+<!-- Waffles -->
+<div>
+<div class="flex items-baseline gap-4 mb-8">
+<h3 class="font-headline-lg text-zinc-900">鬆餅</h3>
+<div class="flex-grow border-b border-[#E8E6E1] mb-2"></div>
+</div>
+<div class="space-y-8">
+<div class="border border-[#E8E6E1] p-6 bg-white hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-headline-md text-zinc-900 uppercase tracking-wide">招牌經典</h4>
+<span class="font-serif text-primary">$18</span>
+</div>
+<p class="font-body-md text-on-surface-variant">比利時風格鬆餅搭配蜂巢奶油與純楓糖漿。</p>
+<div class="mt-4 flex gap-2">
+<span class="bg-secondary-container/30 text-on-secondary-container px-3 py-0.5 rounded-full text-[10px] font-label-caps uppercase">主廚特製</span>
+</div>
+</div>
+<div class="border border-[#E8E6E1] p-6 bg-white hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-headline-md text-zinc-900 uppercase tracking-wide">莓果山巔</h4>
+<span class="font-serif text-primary">$20</span>
+</div>
+<p class="font-body-md text-on-surface-variant">時令野莓、香草籽香緹奶油與覆盆子淋醬。</p>
+</div>
+</div>
+</div>
+<!-- Latte & Coffee -->
+<div>
+<div class="flex items-baseline gap-4 mb-8">
+<h3 class="font-headline-lg text-zinc-900">拉花拿鐵</h3>
+<div class="flex-grow border-b border-[#E8E6E1] mb-2"></div>
+</div>
+<ul class="space-y-6">
+<li class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<h4 class="font-body-lg font-bold text-zinc-800">經典拿鐵</h4>
+</div>
+<div class="flex-grow border-t border-dotted border-[#E8E6E1] mx-4"></div>
+<span class="font-serif text-primary">$7</span>
+</li>
+<li class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<h4 class="font-body-lg font-bold text-zinc-800">薰衣草迷霧拿鐵</h4>
+</div>
+<div class="flex-grow border-t border-dotted border-[#E8E6E1] mx-4"></div>
+<span class="font-serif text-primary">$9</span>
+</li>
+<li class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<h4 class="font-body-lg font-bold text-zinc-800">黃金香料拿鐵</h4>
+</div>
+<div class="flex-grow border-t border-dotted border-[#E8E6E1] mx-4"></div>
+<span class="font-serif text-primary">$9</span>
+</li>
+</ul>
+</div>
+<!-- Call to Action -->
+<div class="bg-zinc-900 p-12 text-center text-white relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-label-caps text-primary-container tracking-[0.2em] mb-4 block">預約訂位</span>
+<h3 class="font-headline-lg mb-6">預定您的美景</h3>
+<p class="font-body-md text-zinc-400 mb-8 max-w-xs mx-auto">日落時段座位有限，建議提前預約。</p>
+<button class="w-full bg-[#C5A36A] text-white py-4 font-label-caps tracking-widest hover:bg-white hover:text-zinc-900 transition-colors">立即預約</button>
+</div>
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+</div>
+</div>
+</section>
+<!-- Final Atmospheric Image Section -->
+<section class="max-w-[1200px] mx-auto px-margin-desktop mt-20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="relative">
+<img alt="餐廳氛圍" class="w-full aspect-[4/5] object-cover" data-alt="Sophisticated restaurant interior at night with warm dim lighting, elegant tables set with white linen, and large windows overlooking city lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxCTQq2SpWcv4KaoVQRaB9fFQmICM7WUQNAF_hv1ZMV149vKL3C5K1n6tgMZngHbIPwjhWmrfCpBP0cxpVRm-7xe_dgJALAQnrsnnn5HY6OqikTaAri0jpSOv3TWiBamZ2OcBbC-DiqaqMsJel-Xmc0WM2s9En0tPS-BX8zFRRv0r7mplvsL-7Jod5gMhtVFqWAAb5fr0hIInhlRzcE_rr1rZ7bHaOOrivZ2qLpQC2QuxPnNYB6KbekxlspxJkZWt6q6fw9l85bZQ"/>
+<div class="absolute -bottom-6 -right-6 w-48 h-48 border border-primary/20 p-2 hidden md:block">
+<div class="w-full h-full bg-white p-6 flex flex-col justify-center text-center">
+<span class="font-label-caps text-[10px] text-zinc-400 mb-1">每日營業</span>
+<span class="font-headline-md text-primary">05:00 PM</span>
+</div>
+</div>
+</div>
+<div class="space-y-8 pl-0 md:pl-12">
+<h2 class="font-headline-display text-zinc-900 leading-tight">這裡的空氣，<br/><span class="italic font-normal">格外清新</span></h2>
+<p class="font-body-lg text-on-surface-variant leading-relaxed">我們的菜單隨著山間的四季流轉而演進，每道菜色都為了襯托周圍的靜謐氛圍而生。</p>
+<div class="grid grid-cols-2 gap-8 border-t border-[#E8E6E1] pt-8">
+<div>
+<h5 class="font-label-caps text-zinc-400 mb-2">在地採購</h5>
+<p class="text-sm">我們與超過 15 個在地高海拔農場合作，確保食材的新鮮與純粹。</p>
+</div>
+<div>
+<h5 class="font-label-caps text-zinc-400 mb-2">主廚餐桌</h5>
+<p class="text-sm">每個週末提供專屬的 7 道式主廚特製菜單，需事先預約。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#E8E6E1] dark:border-zinc-800 bg-[#FCFAF7] dark:bg-zinc-900">
+<div class="flex flex-col items-center justify-center py-20 px-16 gap-8 w-full">
+<div class="text-lg italic font-serif text-zinc-800 dark:text-zinc-200">Stay with Mountain (眺高)</div>
+<div class="flex flex-wrap justify-center gap-10">
+<a class="font-serif text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">隱私權政策</a>
+<a class="font-serif text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">使用條款</a>
+<a class="font-serif text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">地理位置</a>
+<a class="font-serif text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-opacity" href="#">聯繫我們</a>
+</div>
+<div class="font-serif text-[10px] uppercase tracking-[0.2em] text-[#C5A36A] dark:text-[#D4B98B]">
+            © 2024 Stay with Mountain (眺高). All rights reserved.
+        </div>
+<div class="flex gap-4 mt-4">
+<span class="material-symbols-outlined text-zinc-400 hover:text-primary cursor-pointer transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined text-zinc-400 hover:text-primary cursor-pointer transition-colors" data-icon="mail">mail</span>
+</div>
+</div>
+</footer>
+</body></html>
