@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SŌL | 現代奢華餐廳訂位</title>
+    
+    <!-- Google Fonts: Playfair Display for headers & Noto Sans TC for premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS for robust modern responsive layouts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fdfbf7',
+                            100: '#fbf7ed',
+                            200: '#f4e9d0',
+                            300: '#eddca4',
+                            400: '#dfbe6b',
+                            500: '#c5a880', /* Premium Champagne Gold Accent */
+                            600: '#b29165',
+                            700: '#94754f',
+                            800: '#765b3d',
+                        },
+                        obsidian: {
+                            50: '#f6f6f6',
+                            100: '#e7e7e8',
+                            200: '#cfcfd2',
+                            300: '#a7a7ae',
+                            400: '#767682',
+                            500: '#565661',
+                            600: '#41414a',
+                            700: '#2f2f35',
+                            800: '#151518', /* Rich dark card background */
+                            900: '#0d0d10', /* Slightly deeper gray */
+                            950: '#050507', /* True velvet black background */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Modern Glassmorphism panel for Header & Modals */
+        .glass-panel {
+            background: rgba(13, 13, 16, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        
+        /* Subtle aesthetic text glow for branding */
+        .text-glow {
+            text-shadow: 0 0 15px rgba(197, 168, 128, 0.4);
+        }
+
+        /* Custom Calendar and clock indicators theme styling */
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.7) sepia(0.3) saturate(1.2) hue-rotate(15deg);
+            cursor: pointer;
+        }
+
+        /* Shine animations on button hover */
+        @keyframes shine {
+            100% {
+                left: 125%;
+            }
+        }
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 30%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.25);
+            transform: skewX(-30deg);
+            transition: none;
+        }
+        .btn-shine:hover::after {
+            animation: shine 0.85s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-obsidian-950 text-obsidian-100 font-sans selection:bg-gold-500 selection:text-obsidian-950 overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+    <!-- Responsive Header Navigation -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-obsidian-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Branding Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center space-x-3.5">
+                        <span class="font-serif text-3xl font-bold tracking-[0.25em] text-gold-500 text-glow">SŌL</span>
+                        <span class="text-[9px] uppercase tracking-[0.45em] text-obsidian-400 border-l border-obsidian-700 pl-4 hidden sm:inline-block">Bistro & Cuisine</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop View Navigation Menu (Hidden on Mobile/Tablet) -->
+                <nav class="hidden md:flex space-x-8 items-center text-xs tracking-widest uppercase font-medium">
+                    <a href="#about" class="text-obsidian-300 hover:text-gold-500 transition-colors duration-300">品牌故事</a>
+                    <a href="#menu" class="text-obsidian-300 hover:text-gold-500 transition-colors duration-300">精選餐單</a>
+                    <a href="#reservation-section" class="text-obsidian-300 hover:text-gold-500 transition-colors duration-300">座位預約</a>
+                    <a href="#contact" class="text-obsidian-300 hover:text-gold-500 transition-colors duration-300">聯絡我們</a>
+                </nav>
+                
+                <!-- Desktop View Action Button -->
+                <div class="hidden md:flex">
+                    <a href="#reservation-section" class="px-6 py-2.5 rounded-sm border border-gold-500/50 text-gold-500 hover:bg-gold-500 hover:text-obsidian-950 transition-all duration-300 text-xs tracking-widest uppercase font-semibold hover:shadow-[0_0_15px_rgba(197,168,128,0.25)]">
+                        立即預訂
+                    </a>
+                </div>
+
+                <!-- Mobile & Tablet Menu Toggle Button -->
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-obsidian-400 hover:text-white hover:bg-obsidian-850 focus:outline-none transition-colors duration-200">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7" />
+                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation Menu -->
+        <div class="hidden md:hidden glass-panel border-b border-obsidian-800" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center tracking-widest uppercase text-sm">
+                <a href="#about" class="block py-3 px-3 rounded-sm text-obsidian-300 hover:bg-obsidian-800 hover:text-gold-500 transition-colors">品牌故事</a>
+                <a href="#menu" class="block py-3 px-3 rounded-sm text-obsidian-300 hover:bg-obsidian-800 hover:text-gold-500 transition-colors">精選餐單</a>
+                <a href="#reservation-section" class="block py-3 px-3 rounded-sm text-obsidian-300 hover:bg-obsidian-800 hover:text-gold-500 transition-colors">座位預約</a>
+                <a href="#contact" class="block py-3 px-3 rounded-sm text-obsidian-300 hover:bg-obsidian-800 hover:text-gold-500 transition-colors">聯絡我們</a>
+                <a href="#reservation-section" class="block py-3.5 bg-gold-500 text-obsidian-950 rounded-sm font-semibold tracking-widest text-xs uppercase hover:bg-gold-400">
+                    立即預訂
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Decorative Hero Banner -->
+        <section class="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden py-16">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-gradient-to-b from-obsidian-950/95 via-obsidian-950/85 to-obsidian-950 z-10"></div>
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1920" 
+                     onerror="this.src='https://placehold.co/1920x1080/121214/c5a880?text=SŌL+Restaurant'"
+                     alt="Luxurious Restaurant Atmosphere" 
+                     class="w-full h-full object-cover object-center opacity-30 scale-105 transform hover:scale-100 transition duration-7000">
+            </div>
+
+            <div class="relative z-20 max-w-4xl mx-auto px-4 text-center">
+                <span class="text-gold-500 tracking-[0.4em] text-xs sm:text-sm uppercase font-semibold mb-3.5 block">THE ART OF FINE DINING</span>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-wide mb-6">
+                    在極簡的光影中，享用旬味
+                </h1>
+                <p class="max-w-xl mx-auto text-obsidian-300 text-xs sm:text-sm md:text-base font-light leading-relaxed mb-8 tracking-wider">
+                    秉持東方禪意與法式廚藝的完美融和，SŌL 將季節最具代表性的食材轉化為令人屏息的盤中藝術。
+                </p>
+                <a href="#reservation-section" class="inline-block px-8 py-4 rounded-sm bg-gold-500 text-obsidian-950 font-semibold tracking-widest text-xs uppercase hover:bg-gold-400 transition-all duration-300 hover:shadow-[0_0_20px_rgba(197,168,128,0.3)] transform hover:-translate-y-0.5">
+                    立即預留您的席位
+                </a>
+            </div>
+        </section>
+
+        <!-- Booking & Form Details Grid -->
+        <section id="reservation-section" class="py-16 sm:py-24 bg-obsidian-900 border-t border-obsidian-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-gold-500 tracking-[0.3em] text-xs uppercase font-medium mb-2 block">ONLINE RESERVATION</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-white font-light tracking-widest">線上座位預約</h2>
+                    <div class="h-[1px] w-16 bg-gold-500/60 mx-auto my-5"></div>
+                    <p class="text-obsidian-400 text-xs sm:text-sm leading-relaxed">
+                        提供30日內的午晚餐即時訂位。為保障全體貴賓權益，請務必填妥真實資訊。
+                    </p>
+                </div>
+
+                <!-- 2-Column Responsive Card Layout (Stacked on Mobile, Split on Desktop) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- Left Column: Guidelines Panel -->
+                    <div class="lg:col-span-5 bg-obsidian-800 border border-obsidian-700/60 p-6 sm:p-10 rounded-sm flex flex-col justify-between space-y-12">
+                        <div>
+                            <h3 class="font-serif text-xl text-white font-light tracking-wider mb-6 pb-2 border-b border-obsidian-750">用餐與預訂須知</h3>
+                            <ul class="space-y-4.5 text-xs sm:text-sm text-obsidian-300 font-light leading-relaxed">
+                                <li class="flex items-start">
+                                    <span class="text-gold-500 mr-3 mt-1 text-xs">◆</span>
+                                    <span>訂位將為您保留 15 分鐘，逾時將自動釋出給現場貴賓。</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-gold-500 mr-3 mt-1 text-xs">◆</span>
+                                    <span>午餐時段最低消費 NT$1,800/位，晚餐時段為 NT$2,800/位。</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-gold-500 mr-3 mt-1 text-xs">◆</span>
+                                    <span>如有特殊忌口、過敏原食材（如海鮮、堅果），請填寫於備註。</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-gold-500 mr-3 mt-1 text-xs">◆</span>
+                                    <span>餐廳內禁帶外食。自備酒水將收洗杯費 NT$150 / 杯。</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Beautified & Scaled Contact Card Details -->
+                        <div class="border-t border-obsidian-750 pt-8 space-y-5">
+                            <!-- Telephone Badge -->
+                            <div class="flex items-center space-x-4 group">
+                                <div class="w-8 h-8 rounded-full bg-gold-500/5 border border-gold-500/20 flex items-center justify-center text-gold-500 shrink-0 transition-all duration-300 group-hover:bg-gold-500/15 group-hover:border-gold-500/40 group-hover:shadow-[0_0_10px_rgba(197,168,128,0.2)]">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] tracking-[0.2em] text-obsidian-400 uppercase font-semibold">專線服務</p>
+                                    <p class="text-xs sm:text-sm text-obsidian-200 tracking-wider font-light mt-0.5 group-hover:text-gold-500 transition-colors duration-300">+886 2 2345 6789</p>
+                                </div>
+                            </div>
+
+                            <!-- Opening Hours Badge -->
+                            <div class="flex items-center space-x-4 group">
+                                <div class="w-8 h-8 rounded-full bg-gold-500/5 border border-gold-500/20 flex items-center justify-center text-gold-500 shrink-0 transition-all duration-300 group-hover:bg-gold-500/15 group-hover:border-gold-500/40 group-hover:shadow-[0_0_10px_rgba(197,168,128,0.2)]">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] tracking-[0.2em] text-obsidian-400 uppercase font-semibold">營業時間</p>
+                                    <p class="text-xs sm:text-sm text-obsidian-200 tracking-wider font-light mt-0.5 group-hover:text-gold-500 transition-colors duration-300">二 - 日 11:30-14:30 / 17:30-22:30 (週一店休)</p>
+                                </div>
+                            </div>
+
+                            <!-- Location Badge -->
+                            <div class="flex items-center space-x-4 group">
+                                <div class="w-8 h-8 rounded-full bg-gold-500/5 border border-gold-500/20 flex items-center justify-center text-gold-500 shrink-0 transition-all duration-300 group-hover:bg-gold-500/15 group-hover:border-gold-500/40 group-hover:shadow-[0_0_10px_rgba(197,168,128,0.2)]">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] tracking-[0.2em] text-obsidian-400 uppercase font-semibold">餐廳地址</p>
+                                    <p class="text-xs sm:text-sm text-obsidian-200 tracking-wider font-light mt-0.5 group-hover:text-gold-500 transition-colors duration-300">台北市信義區極簡路 88 號 1 樓</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Booking Form Card -->
+                    <div class="lg:col-span-7 bg-obsidian-800 border border-obsidian-700/60 p-6 sm:p-10 rounded-sm relative">
+                        <form id="booking-form" novalidate class="space-y-6">
+                            
+                            <!-- Area selection pills -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-[0.2em] text-gold-500 mb-3">安排座位區域</label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="seating_area" value="大廳常規席" checked class="peer sr-only">
+                                        <div class="py-3 px-1 text-center rounded-sm border border-obsidian-700 bg-obsidian-900 text-xs tracking-wide text-obsidian-400 peer-checked:border-gold-500 peer-checked:text-gold-500 transition-all duration-300">
+                                            常規大廳席
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="seating_area" value="主廚吧台" class="peer sr-only">
+                                        <div class="py-3 px-1 text-center rounded-sm border border-obsidian-700 bg-obsidian-900 text-xs tracking-wide text-obsidian-400 peer-checked:border-gold-500 peer-checked:text-gold-500 transition-all duration-300">
+                                            主廚吧台
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="seating_area" value="景觀窗側" class="peer sr-only">
+                                        <div class="py-3 px-1 text-center rounded-sm border border-obsidian-700 bg-obsidian-900 text-xs tracking-wide text-obsidian-400 peer-checked:border-gold-500 peer-checked:text-gold-500 transition-all duration-300">
+                                            景觀窗側
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Name & Phone Inputs Row -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div class="relative">
+                                    <label for="username" class="block text-xs uppercase tracking-widest text-obsidian-400 mb-2 font-medium">顧客姓名 <span class="text-red-500">*</span></label>
+                                    <input type="text" id="username" name="username" placeholder="請輸入姓名" 
+                                           class="w-full px-4 py-3 bg-obsidian-900 border border-obsidian-700 text-white rounded-sm placeholder-obsidian-600 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all duration-300 text-sm">
+                                    <p id="error-username" class="text-red-400 text-xs mt-1.5 hidden"></p>
+                                </div>
+
+                                <div class="relative">
+                                    <label for="userphone" class="block text-xs uppercase tracking-widest text-obsidian-400 mb-2 font-medium">聯絡電話 <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="userphone" name="userphone" placeholder="例: 0912345678" 
+                                           class="w-full px-4 py-3 bg-obsidian-900 border border-obsidian-700 text-white rounded-sm placeholder-obsidian-600 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all duration-300 text-sm">
+                                    <p id="error-userphone" class="text-red-400 text-xs mt-1.5 hidden"></p>
+                                </div>
+                            </div>
+
+                            <!-- Email & Guests Row -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div class="relative">
+                                    <label for="useremail" class="block text-xs uppercase tracking-widest text-obsidian-400 mb-2 font-medium">電子信箱 <span class="text-red-500">*</span></label>
+                                    <input type="email" id="useremail" name="useremail" placeholder="例: user@domain.com" 
+                                           class="w-full px-4 py-3 bg-obsidian-900 border border-obsidian-700 text-white rounded-sm placeholder-obsidian-600 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all duration-300 text-sm">
+                                    <p id="error-useremail" class="text-red-400 text-xs mt-1.5 hidden"></p>
+                                </div>
+
+                                <div class="relative">
+                                    <label for="guest_count" class="block text-xs uppercase tracking-widest text-obsidian-400 mb-2 font-medium">用餐人數 <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <select id="guest_count" name="guest_count" 
+                                                class="w-full px-4 py-3 bg-obsidian-900 border border-obsidian-700 text-white rounded-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all duration-300 text-sm appearance-none">
+                                            <option value="" disabled selected>選擇人數</option>
+                                            <option value="1">1 位</option>
+                                            <option value="2">2 位</option>
+                                            <option value="3">3 位</option>
+                                            <option value="4">4 位</option>
+                                            <option value="5">5 位</option>
+                                            <option value="6">6 位</option>
+                                            <option value="large">7人以上（請致電專線）</option>
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-obsidian-400">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                        </div>
+                                    </div>
+                                    <p id="error-guest_count" class="text-red-400 text-xs mt-1.5 hidden"></p>
+                                </div>
+                            </div>
+
+                            <!-- Date & Time Row -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div class="relative">
+                                    <label for="booking_date" class="block text-xs uppercase tracking-widest text-obsidian-400 mb-2 font-medium">預約日期 <span class="text-red-500">*</span></label>
+                                    <input type="date" id="booking_date" name="booking_date" 
+                                           class="w-full px-4 py-3 bg-obsidian-900 border border-obsidian-700 text-white rounded-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all duration-300 text-sm">
+                                    <p id="error-booking_date" class="text-red-400 text-xs mt-1.5 hidden"></p>
+                                </div>
+
+                                <div class="relative">
+                                    <label for="booking_time" class="block text-xs uppercase tracking-widest text-obsidian-400 mb-2 font-medium">預約時段 <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <select id="booking_time" name="booking_time" 
+                                                class="w-full px-4 py-3 bg-obsidian-900 border border-obsidian-700 text-white rounded-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all duration-300 text-sm appearance-none">
+                                            <option value="" disabled selected>請選擇時段</option>
+                                            <optgroup label="午餐餐期" class="bg-obsidian-800 text-obsidian-300">
+                                                <option value="11:30">11:30</option>
+                                                <option value="12:00">12:00</option>
+                                                <option value="13:00">13:00</option>
+                                            </optgroup>
+                                            <optgroup label="晚餐餐期" class="bg-obsidian-800 text-obsidian-300">
+                                                <option value="17:30">17:30</option>
+                                                <option value="18:00">18:00</option>
+                                                <option value="19:00">19:00</option>
+                                                <option value="20:00">20:00</option>
+                                            </optgroup>
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-obsidian-400">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                        </div>
+                                    </div>
+                                    <p id="error-booking_time" class="text-red-400 text-xs mt-1.5 hidden"></p>
+                                </div>
+                            </div>
+
+                            <!-- Special Notes -->
+                            <div>
+                                <label for="booking_notes" class="block text-xs uppercase tracking-widest text-obsidian-400 mb-2 font-medium">特殊備註 (特殊飲食限制/紀念日需求)</label>
+                                <textarea id="booking_notes" name="booking_notes" rows="3" placeholder="如有過敏食材或幼童餐椅需求，請在此告知..." 
+                                          class="w-full px-4 py-3 bg-obsidian-900 border border-obsidian-700 text-white rounded-sm placeholder-obsidian-600 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all duration-300 text-sm resize-none"></textarea>
+                            </div>
+
+                            <!-- Terms and Conditions Checkbox -->
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="agreement" name="agreement" type="checkbox" required
+                                           class="focus:ring-gold-500 h-4 w-4 text-gold-500 border-obsidian-750 bg-obsidian-900 rounded-sm">
+                                </div>
+                                <div class="ml-3 text-xs leading-5">
+                                    <label for="agreement" class="text-obsidian-400 cursor-pointer">我已確認填載之預約資訊正確無誤，並同意前述訂位規章。</label>
+                                    <p id="error-agreement" class="text-red-400 text-xs mt-1.5 hidden"></p>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button with Glare Animation on Hover -->
+                            <div class="pt-2">
+                                <button type="submit" id="submit-btn" class="btn-shine w-full py-4 rounded-sm bg-gradient-to-r from-gold-500 to-gold-600 text-obsidian-950 font-semibold tracking-widest text-xs sm:text-sm uppercase transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_25px_rgba(197,168,128,0.4)] focus:outline-none">
+                                    確認提交預約單
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Custom Aesthetic Success Modal Overlay -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian-950/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-obsidian-800 border border-gold-500/20 p-8 sm:p-10 rounded-sm max-w-lg w-full text-center relative shadow-2xl scale-95 transition-transform duration-300" id="modal-box">
+            
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-obsidian-400 hover:text-white transition-colors" aria-label="關閉預覽">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Custom Success Icon -->
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-gold-500/10 border border-gold-500/40 mb-5">
+                <svg class="h-8 w-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+
+            <h3 class="font-serif text-2xl text-white font-light tracking-wider mb-2">預約已成功送出</h3>
+            <p class="text-gold-500 text-xs tracking-[0.2em] uppercase font-semibold mb-6">Reservation Received</p>
+            
+            <!-- Reservation Summary Sheet inside Modal -->
+            <div class="bg-obsidian-900 border border-obsidian-750 p-6 rounded-sm text-left text-xs sm:text-sm space-y-3 mb-6">
+                <div class="flex justify-between border-b border-obsidian-800 pb-2.5">
+                    <span class="text-obsidian-400">預約大名</span>
+                    <span id="summary-name" class="text-white font-medium"></span>
+                </div>
+                <div class="flex justify-between border-b border-obsidian-800 pb-2.5">
+                    <span class="text-obsidian-400">用餐時段</span>
+                    <span id="summary-datetime" class="text-white font-medium"></span>
+                </div>
+                <div class="flex justify-between border-b border-obsidian-800 pb-2.5">
+                    <span class="text-obsidian-400">用餐人數</span>
+                    <span id="summary-guests" class="text-white font-medium"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-obsidian-400">指定區域</span>
+                    <span id="summary-area" class="text-gold-500 font-medium"></span>
+                </div>
+            </div>
+
+            <p class="text-obsidian-400 text-xs leading-relaxed mb-6 font-light">
+                系統已發送電子確認函至您的聯絡信箱。期待您的蒞臨。<br>如有調整請於預定日前 24 小時來電。
+            </p>
+
+            <button id="modal-confirm-btn" class="w-full py-3 bg-gold-500 text-obsidian-950 font-semibold tracking-widest text-xs uppercase hover:bg-gold-400 transition-colors duration-300">
+                好的，返回首頁
+            </button>
+        </div>
+    </div>
+
+    <!-- Mini error notification toast in bottom right -->
+    <div id="error-toast" class="fixed bottom-6 right-6 z-50 glass-panel border border-red-500/40 text-red-400 text-xs px-5 py-3.5 rounded-sm shadow-xl hidden flex items-center space-x-2.5 animate-bounce">
+        <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <span id="toast-text">請確實修正標記為紅色的必填欄位。</span>
+    </div>
+
+    <footer id="contact" class="bg-obsidian-950 border-t border-obsidian-900 py-10 text-center text-[10px] tracking-[0.2em] uppercase text-obsidian-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <span class="font-serif text-lg tracking-[0.3em] text-gold-500 block">SŌL</span>
+            <p class="font-light">© 2026 SŌL Bistro & Cuisine. 匠心獨運 · 版權所有</p>
+        </div>
+    </footer>
+
+    <!-- Javascript Client Validation & Behavior Control -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('booking_date');
+            const form = document.getElementById('booking-form');
+            const successModal = document.getElementById('success-modal');
+            const modalBox = document.getElementById('modal-box');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const modalConfirmBtn = document.getElementById('modal-confirm-btn');
+            const errorToast = document.getElementById('error-toast');
+            const toastText = document.getElementById('toast-text');
+
+            // Responsive Navigation Variables
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            // Responsive Navigation Toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                const open = mobileMenu.classList.toggle('hidden');
+                hamburgerIcon.classList.toggle('hidden', !open);
+                closeIcon.classList.toggle('hidden', open);
+            });
+
+            // Auto Close mobile navbar items when clicked
+            mobileMenu.querySelectorAll('a').forEach(navLink => {
+                navLink.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    hamburgerIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+
+            // Prevent user from choosing booking date in the past
+            const todayStr = new Date().toISOString().split('T')[0];
+            dateInput.min = todayStr;
+            
+            // Default select tomorrow
+            const tomorrowDate = new Date();
+            tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+            dateInput.value = tomorrowDate.toISOString().split('T')[0];
+
+            // Helpers for visual feedback during input checking
+            function displayError(inputElement, errorElement, messageText) {
+                inputElement.classList.add('border-red-500', 'focus:ring-red-500', 'focus:border-red-500');
+                inputElement.classList.remove('border-obsidian-700', 'focus:ring-gold-500', 'focus:border-gold-500');
+                errorElement.textContent = messageText;
+                errorElement.classList.remove('hidden');
+            }
+
+            function removeError(inputElement, errorElement) {
+                inputElement.classList.remove('border-red-500', 'focus:ring-red-500', 'focus:border-red-500');
+                inputElement.classList.add('border-obsidian-700', 'focus:ring-gold-500', 'focus:border-gold-500');
+                errorElement.classList.add('hidden');
+            }
+
+            // Centralized Input Validator Dictionary
+            const fieldsSchema = {
+                username: {
+                    el: document.getElementById('username'),
+                    err: document.getElementById('error-username'),
+                    check() {
+                        const val = this.el.value.trim();
+                        if (!val) {
+                            displayError(this.el, this.err, '請輸入預訂顧客姓名');
+                            return false;
+                        }
+                        if (val.length < 2) {
+                            displayError(this.el, this.err, '姓名不得少於 2 個字元');
+                            return false;
+                        }
+                        removeError(this.el, this.err);
+                        return true;
+                    }
+                },
+                userphone: {
+                    el: document.getElementById('userphone'),
+                    err: document.getElementById('error-userphone'),
+                    check() {
+                        const val = this.el.value.trim().replace(/\s/g, '');
+                        // Taiwan mobile and local formats regex validation
+                        const phonePattern = /^09\d{8}$|^0\d{1,2}-?\d{6,8}$/;
+                        if (!val) {
+                            displayError(this.el, this.err, '請填寫聯絡電話');
+                            return false;
+                        }
+                        if (!phonePattern.test(val)) {
+                            displayError(this.el, this.err, '電話格式不正確 (如: 0912345678)');
+                            return false;
+                        }
+                        removeError(this.el, this.err);
+                        return true;
+                    }
+                },
+                useremail: {
+                    el: document.getElementById('useremail'),
+                    err: document.getElementById('error-useremail'),
+                    check() {
+                        const val = this.el.value.trim();
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!val) {
+                            displayError(this.el, this.err, '請填寫電子信箱');
+                            return false;
+                        }
+                        if (!emailPattern.test(val)) {
+                            displayError(this.el, this.err, '電子信箱格式錯誤');
+                            return false;
+                        }
+                        // Validate Email character length (Strict check requirements)
+                        if (val.length < 6 || val.length > 55) {
+                            displayError(this.el, this.err, '信箱長度限制為 6 至 55 字元');
+                            return false;
+                        }
+                        removeError(this.el, this.err);
+                        return true;
+                    }
+                },
+                guest_count: {
+                    el: document.getElementById('guest_count'),
+                    err: document.getElementById('error-guest_count'),
+                    check() {
+                        const val = this.el.value;
+                        if (!val) {
+                            displayError(this.el, this.err, '請選擇用餐人數');
+                            return false;
+                        }
+                        removeError(this.el, this.err);
+                        return true;
+                    }
+                },
+                booking_date: {
+                    el: dateInput,
+                    err: document.getElementById('error-booking_date'),
+                    check() {
+                        const val = this.el.value;
+                        if (!val) {
+                            displayError(this.el, this.err, '請指定預約日期');
+                            return false;
+                        }
+                        const selectedDate = new Date(val);
+                        const todayDate = new Date();
+                        todayDate.setHours(0,0,0,0);
+                        if (selectedDate < todayDate) {
+                            displayError(this.el, this.err, '不可選擇過去的日期');
+                            return false;
+                        }
+                        removeError(this.el, this.err);
+                        return true;
+                    }
+                },
+                booking_time: {
+                    el: document.getElementById('booking_time'),
+                    err: document.getElementById('error-booking_time'),
+                    check() {
+                        const val = this.el.value;
+                        if (!val) {
+                            displayError(this.el, this.err, '請選擇預期時段');
+                            return false;
+                        }
+                        removeError(this.el, this.err);
+                        return true;
+                    }
+                },
+                agreement: {
+                    el: document.getElementById('agreement'),
+                    err: document.getElementById('error-agreement'),
+                    check() {
+                        if (!this.el.checked) {
+                            displayError(this.el, this.err, '您必須同意訂位須知方能完成預約');
+                            return false;
+                        }
+                        removeError(this.el, this.err);
+                        return true;
+                    }
+                }
+            };
+
+            // Setup live blur validation on typing/selection
+            Object.keys(fieldsSchema).forEach(key => {
+                const schemaItem = fieldsSchema[key];
+                const actionType = (schemaItem.el.type === 'select-one' || schemaItem.el.type === 'checkbox' || schemaItem.el.type === 'date') ? 'change' : 'input';
+                schemaItem.el.addEventListener(actionType, () => {
+                    schemaItem.check();
+                });
+            });
+
+            // Trigger error toast alert message banner
+            function popToast(msg) {
+                toastText.textContent = msg;
+                errorToast.classList.remove('hidden');
+                setTimeout(() => {
+                    errorToast.classList.add('hidden');
+                }, 4000);
+            }
+
+            // Handle submission and launch custom modal view
+            form.addEventListener('submit', (evt) => {
+                evt.preventDefault();
+
+                let isAllValid = true;
+                Object.keys(fieldsSchema).forEach(key => {
+                    if (!fieldsSchema[key].check()) {
+                        isAllValid = false;
+                    }
+                });
+
+                if (!isAllValid) {
+                    popToast('請修正紅色標記區域的錯誤。');
+                    return;
+                }
+
+                // Additional check for large party redirect instruction
+                const pickedCount = fieldsSchema.guest_count.el.value;
+                if (pickedCount === 'large') {
+                    popToast('7人以上大宗預訂請撥打專線，系統暫不支援線上保留。');
+                    return;
+                }
+
+                // Read and set confirmation overview panel fields
+                const nameText = fieldsSchema.username.el.value.trim();
+                const dateTimeText = `${fieldsSchema.booking_date.el.value} at ${fieldsSchema.booking_time.el.value}`;
+                const selectedSeatingOption = form.querySelector('input[name="seating_area"]:checked').value;
+
+                document.getElementById('summary-name').textContent = nameText;
+                document.getElementById('summary-datetime').textContent = dateTimeText;
+                document.getElementById('summary-guests').textContent = `${pickedCount} 位貴賓`;
+                document.getElementById('summary-area').textContent = selectedSeatingOption;
+
+                // Animate showing modal without alerts
+                successModal.classList.remove('hidden');
+                setTimeout(() => {
+                    successModal.classList.add('opacity-100');
+                    modalBox.classList.remove('scale-95');
+                    modalBox.classList.add('scale-100');
+                }, 50);
+            });
+
+            // Closure animation logic for standard elements
+            function closeModal() {
+                successModal.classList.remove('opacity-100');
+                modalBox.classList.add('scale-95');
+                modalBox.classList.remove('scale-100');
+                setTimeout(() => {
+                    successModal.classList.add('hidden');
+                    form.reset();
+                    // Restore default values
+                    dateInput.value = tomorrowDate.toISOString().split('T')[0];
+                }, 300);
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modalConfirmBtn.addEventListener('click', closeModal);
+        });
+    </script>
+</body>
+</html>
